@@ -16,4 +16,7 @@ nginx:
 docker run --net fastnetwork -p 8080:80 -d nginx
 docker run --net fastnetwork -e DOMAINS="pfaulk.de -> http://nginx:8080" -e STAGE="production" -p 80:80 -p 443:443 steveltn/https-portal:1
 
-https://www.youtube.com/watch?v=nwdOooZbICA
+docker run -d -p 8080:8080 -p 80:80 \
+-v $PWD/traefik.toml:/etc/traefik/traefik.toml \
+-v /var/run/docker.sock:/var/run/docker.sock \
+traefik

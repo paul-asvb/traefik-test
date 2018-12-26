@@ -7,7 +7,7 @@
 # Optional
 # Default: false
 #
-# debug = true
+debug = true
 
 # Log level
 #
@@ -35,14 +35,20 @@
 [entryPoints]
   [entryPoints.http]
   address = ":80"
-    [entryPoints.http.redirect]
-    entryPoint = "https"
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
-      [[entryPoints.https.tls.certificates]]
-      certFile = "tests/traefik.crt"
-      keyFile = "tests/traefik.key"
+
+[acme]
+email = "paul@paul-mayer.eu"
+storage = "acme.json"
+caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+entryPoint = "https"
+  [acme.httpChallenge]
+  entryPoint = "http"
+
+[[acme.domains]]
+  main = "pfaulk.de"
 
 ################################################################
 # Traefik logs configuration
@@ -138,7 +144,9 @@
 
 # Enable Docker configuration backend
 [docker]
-
+network = "fastnetwork"
+endpoint = "unix:///var/run/docker.sock"
+watch = true
 # Docker server endpoint. Can be a tcp or a unix socket endpoint.
 #
 # Required

@@ -1,15 +1,15 @@
-
 https-portal:
   image: steveltn/https-portal:1
   ports:
-    - '80:80'
-    - '443:443'
+  - '80:80'
+  - '443:443'
   links:
-    - nginx
+  - nginx
+  restart: always
   environment:
-    DOMAINS: 'pfaulk.de -> http://nginx:80'
+    DOMAINS: 'pfaulk.de -> http://nginx:8080'
+
 nginx:
   ports:
-    - '80:80'
+  - '8080:80'
   image: nginx
-

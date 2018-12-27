@@ -24,6 +24,8 @@ docker run \
 -v $PWD/traefik.toml:/etc/traefik/traefik.toml \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $PWD/acme.json:/acme.json \
+-l traefik.basic.port=8080 \
+-l traefik.frontend.rule=Host:pfaulk.de \
 --net fastnetwork \
 traefik
 

@@ -142,6 +142,8 @@ defaultEntryPoints = ["http", "https"]
 # Enable Docker configuration backend
 
 [docker]
+
+    entryPoint = "http"
     network = "fastnetwork"
     endpoint = "unix:///var/run/docker.sock"
     domain = "pfaulk.de"

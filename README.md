@@ -1,4 +1,4 @@
-# Traefiks test
+# Traefik test
 
 [Documentation](https://docs.traefik.io/)
 

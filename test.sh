@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
+git pull
 
 docker rm $(docker ps -a -q) -f
-
 
 docker run \
 -p 9000:80 \

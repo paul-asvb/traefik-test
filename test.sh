@@ -10,6 +10,7 @@ docker run \
 --net fastnetwork \
 -l traefik.docker.network=fastnetwork \
 -l traefik.enable=true \
+-l traefik.frontend.entryPoints=http \
 -l traefik.basic.frontend.rule=Host:pfaulk.de \
 -l traefik.basic.port=9000 \
 -l traefik.basic.protocol=http \

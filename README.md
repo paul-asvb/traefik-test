@@ -10,7 +10,7 @@ docker run \
 -p 443:443 \
 -v $PWD/traefik.toml:/etc/traefik/traefik.toml \
 -v /var/run/docker.sock:/var/run/docker.sock \
--v /opt/traefik/acme.json:/acme.json \
+-v $PWD/acme.json:/acme.json \
 --net fastnetwork \
 traefik
 
@@ -30,12 +30,3 @@ docker run \
 nginx
 
 ```
-
-  - "traefik.docker.network=web"
-      - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:app.my-awesome-app.org"
-      - "traefik.basic.port=9000"
-      - "traefik.basic.protocol=http"
-      - "traefik.admin.frontend.rule=Host:admin-app.my-awesome-app.org"
-      - "traefik.admin.protocol=https"
-      - "traefik.admin.port=9443"

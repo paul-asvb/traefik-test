@@ -30,32 +30,37 @@ defaultEntryPoints = ["http", "https"]
 # Entrypoints configuration
 ################################################################
 
-# Entrypoints definition
-#
-# Optional
-# Default:
+defaultEntryPoints = ["http", "https"]
+
 [entryPoints]
     [entryPoints.http]
         address = ":80"
-        [entryPoints.http.redirect]
-            entryPoint = "https"
-    [entryPoints.https]
-        address = ":443"
-        [entryPoints.https.tls]
-
-[acme]
-    email = "paul@paul-mayer.eu"
-    storage = "acme.json"
-    caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
-    entryPoint = "https"
-    onHostRule = true
-
-    [acme.httpChallenge]
-        entryPoint = "http"
-
-    [[acme.domains]]
-        main = "pfaulk.de"
-
+#        [entryPoints.http.redirect]
+#            entryPoint = "https"
+#    [entryPoints.https]
+#        address = ":443"
+#        [entryPoints.https.tls]
+#        [[entryPoints.https.tls.certificates]]
+#              certFile = "tests/traefik.crt"
+#              keyFile = "tests/traefik.key"
+#[acme]
+#    email = "paul@paul-mayer.eu"
+#    storage = "acme.json"
+#    caServer = "https://acme-v02.api.letsencrypt.org/directory"
+#    entryPoint = "https"
+#    onHostRule = true
+#
+#    [acme.tlsChallenge]
+#
+#    [acme.httpChallenge]
+#        entryPoint = "http"
+#
+#    [[acme.domains]]
+#        main = "pfaulk.de"
+#
+#    [acme.dnsChallenge]
+#        provider = "route53"
+#
 ################################################################
 # Traefik logs configuration
 ################################################################

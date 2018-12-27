@@ -12,7 +12,7 @@ docker run \
 -l traefik.enable=true \
 -l traefik.basic.frontend.rule=Host:pfaulk.de \
 -l traefik.basic.port=9000 \
--l traefik.basic.protocol=https \
+-l traefik.basic.protocol=http \
 --name html \
 nginx
 

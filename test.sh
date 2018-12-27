@@ -4,6 +4,8 @@ git pull
 
 docker rm $(docker ps -a -q) -f
 
+echo "container removed"
+
 docker run \
 -p 9000:80 \
 -d \
@@ -16,6 +18,8 @@ docker run \
 -l traefik.basic.protocol=http \
 --name html \
 nginx
+
+echo "nginx running"
 
 docker run \
 -p 8080:8080 \

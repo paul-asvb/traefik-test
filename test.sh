@@ -29,6 +29,7 @@ nginx
 echo "nginx running"
 
 docker run \
+-d \
 -p 8080:8080 \
 -p 80:80 \
 -p 443:443 \
@@ -37,7 +38,5 @@ docker run \
 --net fastnetwork \
 traefik
 
-
-# -d
 # -v $PWD/acme.json:/acme.json
 

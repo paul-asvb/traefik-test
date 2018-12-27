@@ -14,7 +14,7 @@ debug = true
 # Optional
 # Default: "ERROR"
 #
-# logLevel = "DEBUG"
+logLevel = "DEBUG"
 
 # Entrypoints to be used by frontends that do not specify any entrypoint.
 # Each frontend can specify its own entrypoints.
@@ -22,7 +22,9 @@ debug = true
 # Optional
 # Default: ["http"]
 #
-# defaultEntryPoints = ["http", "https"]
+defaultEntryPoints = ["http", "https"]
+
+[retry]
 
 ################################################################
 # Entrypoints configuration
@@ -33,22 +35,26 @@ debug = true
 # Optional
 # Default:
 [entryPoints]
-  [entryPoints.http]
-  address = ":80"
-  [entryPoints.https]
-  address = ":443"
-    [entryPoints.https.tls]
+    [entryPoints.http]
+        address = ":80"
+        [entryPoints.http.redirect]
+            entryPoint = "https"
+    [entryPoints.https]
+        address = ":443"
+        [entryPoints.https.tls]
 
 [acme]
-email = "paul@paul-mayer.eu"
-storage = "acme.json"
-caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
-entryPoint = "https"
-  [acme.httpChallenge]
-  entryPoint = "http"
+    email = "paul@paul-mayer.eu"
+    storage = "acme.json"
+    caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+    entryPoint = "https"
+    onHostRule = true
 
-[[acme.domains]]
-  main = "pfaulk.de"
+    [acme.httpChallenge]
+        entryPoint = "http"
+
+    [[acme.domains]]
+        main = "pfaulk.de"
 
 ################################################################
 # Traefik logs configuration
@@ -143,10 +149,14 @@ entryPoint = "https"
 ################################################################
 
 # Enable Docker configuration backend
+
 [docker]
-network = "fastnetwork"
-endpoint = "unix:///var/run/docker.sock"
-watch = true
+    network = "fastnetwork"
+    endpoint = "unix:///var/run/docker.sock"
+    domain = "pfaulk.de"
+    watch = true
+    exposedByDefault = false
+
 # Docker server endpoint. Can be a tcp or a unix socket endpoint.
 #
 # Required

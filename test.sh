@@ -7,6 +7,12 @@ docker rm $(docker ps -a -q) -f
 echo "container removed"
 
 docker run \
+-l traefik.frontend.rule=Host:whoami.docker.localhost \
+containous/whoami
+
+echo "whoami running"
+
+docker run \
 -p 9000:80 \
 -d \
 --net fastnetwork \

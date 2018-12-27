@@ -8,6 +8,7 @@ echo "container removed"
 
 docker run \
 -l traefik.frontend.rule=Host:whoami.docker.localhost \
+-d \
 containous/whoami
 
 echo "whoami running"

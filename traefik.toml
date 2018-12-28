@@ -31,17 +31,16 @@
 #              keyFile = "tests/traefik.key"
 [acme]
 
-    entryPoint = "https"
     email = "paul@paul-mayer.eu"
     storage = "acme.json"
     caServer = "https://acme-v02.api.letsencrypt.org/directory"
     entryPoint = "https"
 #    onHostRule = true
 #
-#    [acme.tlsChallenge]
+    [acme.tlsChallenge]
 #
-#    [acme.httpChallenge]
-#        entryPoint = "http"
+    [acme.httpChallenge]
+        entryPoint = "http"
 #
     [[acme.domains]]
         main = "pfaulk.de"

@@ -33,13 +33,13 @@ nginx
 docker run \
 -p 8080:8080 \
 -p 80:80 \
+-p 443:443 \
 -v $PWD/traefik.toml:/etc/traefik/traefik.toml \
 -v /var/run/docker.sock:/var/run/docker.sock \
 traefik
 
 # -d \
 
-# -p 443:443 \
 # --net fastnetwork \
 # -v $PWD/acme.json:/acme.json
 

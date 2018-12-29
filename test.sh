@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
-git pull
-
 docker rm $(docker ps -a -q) -f
 
-echo "container removed"
+#echo "container removed"
 
 docker run \
 -l traefik.frontend.rule=Host:whoami.docker.localhost \
 -d \
 containous/whoami
 
-echo "whoami running"
-
+#echo "whoami running"
 
 docker run \
 -p 9000:80 \

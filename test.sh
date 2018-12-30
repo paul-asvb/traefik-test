@@ -47,6 +47,7 @@ docker run \
 -p 443:443 \
 -v $PWD/traefik.toml:/etc/traefik/traefik.toml \
 -v /var/run/docker.sock:/var/run/docker.sock \
+-d \
 traefik
 
 # -d \

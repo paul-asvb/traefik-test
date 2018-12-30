@@ -8,7 +8,13 @@ CONTAINER_ID=$(docker ps -aqf "name=$CONTAINER_NAME")
 docker rm -f $CONTAINER_ID
 docker rmi -f $IMAGE_NAME
 docker build -t $IMAGE_NAME .
-docker run --name $CONTAINER_NAME -p 8080:8080 -d $IMAGE_NAME:latest
+
+docker run \
+--name $CONTAINER_NAME \
+-p 3000:3000 \
+-l traefik.basic.frontend.rule=Host:pfaulk.de \
+-d \
+$IMAGE_NAME:latest
 
 #echo "container removed"
 
@@ -19,11 +25,11 @@ containous/whoami
 
 #echo "whoami running"
 
-docker run \
--p 9000:80 \
--d \
--l traefik.basic.frontend.rule=Host:pfaulk.de \
-nginx
+#docker run \
+#-p 9000:80 \
+#-d \
+#-l traefik.basic.frontend.rule=Host:pfaulk.de \
+#nginx
 
 #-l traefik.docker.network=fastnetwork \
 #-l traefik.enable=true \

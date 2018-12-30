@@ -2,6 +2,14 @@
 
 docker rm $(docker ps -a -q) -f
 
+IMAGE_NAME=test_image
+CONTAINER_NAME=test_container
+CONTAINER_ID=$(docker ps -aqf "name=$CONTAINER_NAME")
+docker rm -f $CONTAINER_ID
+docker rmi -f $IMAGE_NAME
+docker build -t $IMAGE_NAME .
+docker run --name $CONTAINER_NAME -p 8080:8080 -d $IMAGE_NAME:latest
+
 #echo "container removed"
 
 docker run \

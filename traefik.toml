@@ -3,10 +3,10 @@
 ################################################################
 
 # Enable debug mode. Optional. Default: false
-#debug = true
+debug = true
 
 # Log level. Optional. Default: "ERROR"
-#logLevel = "DEBUG"
+logLevel = "DEBUG"
 
 # Entrypoints to be used by frontends that do not specify any entrypoint.
 # Each frontend can specify its own entrypoints. Optional. Default: ["http"]
